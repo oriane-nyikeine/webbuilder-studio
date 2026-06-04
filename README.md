@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WebBuilder Studio
 
-## Getting Started
+Éditeur web visuel no-code construit sur **GrapesJS Studio SDK**, **Next.js** et **TypeScript**.
 
-First, run the development server:
+Un outil personnel pour concevoir et assembler des pages web directement dans le navigateur, sans écrire de HTML à la main — avec sauvegarde automatique, thème sombre personnalisé, et support de la méthodologie **Client First**.
+
+---
+
+## Fonctionnalités
+
+- Éditeur visuel drag & drop (GrapesJS Studio SDK)
+- Thème sombre sur mesure (palette violet/rose)
+- Sauvegarde automatique dans un fichier JSON local via API Next.js
+- Support Client First — insertion de sections structurées Finsweet
+- Plugin d'animations (AOS + Animate.css)
+- Composants riches : tableaux, carrousels Swiper, galeries, accordéons, icônes Iconify, vidéos YouTube
+
+## Stack
+
+| Outil | Rôle |
+|-------|------|
+| Next.js 16 | Framework React (App Router) |
+| GrapesJS Studio SDK | Moteur d'édition visuelle |
+| TypeScript | Typage |
+| Tailwind CSS 4 | Styles utilitaires |
+
+## Installation
 
 ```bash
+git clone https://github.com/oriane-nyikeine/webbuilder-studio.git
+cd webbuilder-studio
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> La clé de licence `DEMO_LOCALHOST_KEY` est fournie par GrapesJS pour un usage en développement local uniquement.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── api/project/     # API de sauvegarde (GET / POST)
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── StudioEditorWrapper.tsx   # Éditeur principal
+│   └── LoadingScreen.tsx
+└── plugins/
+    ├── clientFirstPlugin.ts      # Intégration Client First
+    └── animationsPlugin.ts       # Animations AOS
+data/
+└── portfolio.json                # Projet sauvegardé
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Oriane Nyikeine** · [LinkedIn](https://www.linkedin.com/in/oriane-nyikeine) · [GitHub](https://github.com/oriane-nyikeine)

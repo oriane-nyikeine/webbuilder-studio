@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagnostic Projet GrapesJS</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #eee; padding: 20px; }
+    h1 { color: #ff6496; }
+    .key { color: #00e5ff; font-weight: bold; }
+    .value { color: #aaa; word-break: break-all; font-size: 12px; }
+    .found { background: #1a3a1a; border-left: 4px solid #00ff88; padding: 10px; margin: 10px 0; }
+    .empty { color: #ff4444; }
+    button {
+      background: #ff6496; color: white; border: none;
+      padding: 10px 20px; cursor: pointer; border-radius: 4px;
+      font-size: 14px; margin: 5px;
+    }
+    button:hover { background: #cc0050; }
+    #result { margin-top: 20px; }
+    pre { background: #1a1a2e; padding: 10px; overflow: auto; max-height: 300px; font-size: 11px; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Diagnostic données portfolio</h1>
+  <p>Cette page cherche les données GrapesJS Studio sauvegardées dans ton navigateur.</p>
+
+  <button onclick="scanStorage()">🔎 Scanner le localStorage</button>
+  <button onclick="clearAndShow()">🗑️ Vider le canvas (repartir à zéro)</button>
+
+  <div id="result"></div>
+
+  <script>
+    function scanStorage() {
+      const result = document.getElementById('result');
+      const keys = Object.keys(localStorage);
+      const gjsKeys = keys.filter(k =>
+        k.includes('gjs') || k.includes('studio') || k.includes('PORTEFOLIO') ||
+        k.includes('project') || k.includes('O_NKN') || k.includes('grapes')
+      );
+
+      if (gjsKeys.length === 0) {
+        result.innerHTML = `
+          <div class="empty">
+            <h2>❌ Aucune donnée GrapesJS trouvée</h2>
+            <p>Le localStorage ne contient pas de données de projet GrapesJS.</p>
+            <p>Total des clés dans localStorage : ${keys.length}</p>
+            <p>Clés présentes : ${keys.join(', ') || '(aucune)'}</p>
+            <hr>
+            <p><strong>→ Il faudra importer le portfolio manuellement.</strong></p>
+          </div>`;
+        return;
+      }
+
+      let html = `<h2>✅ ${gjsKeys.length} clé(s) trouvée(s) !</h2>`;
+      gjsKeys.forEach(key => {
+        const raw = localStorage.getItem(key);
+        const size = (raw.length / 1024).toFixed(1);
+        let preview = '';
+        try {
+          const parsed = JSON.parse(raw);
+          preview = JSON.stringify(parsed, null, 2).substring(0, 500) + '...';
+        } catch(e) {
+          preview = raw.substring(0, 500);
+        }
+        html += `
+          <div class="found">
+            <div class="key">🔑 ${key} <span style="color:#888">(${size} KB)</span></div>
+            <button onclick="copyKey('${key}')">📋 Copier la valeur</button>
+            <pre class="value">${preview}</pre>
+          </div>`;
+      });
+
+      result.innerHTML = html;
+    }
+
+    function copyKey(key) {
+      const val = localStorage.getItem(key);
+      navigator.clipboard.writeText(val).then(() => alert('Valeur copiée !'));
+    }
+
+    function clearAndShow() {
+      if (!confirm('Vider toutes les données GrapesJS du localStorage ?')) return;
+      const keys = Object.keys(localStorage).filter(k =>
+        k.includes('gjs') || k.includes('studio') || k.includes('PORTEFOLIO') ||
+        k.includes('project') || k.includes('grapes')
+      );
+      keys.forEach(k => localStorage.removeItem(k));
+      alert(`${keys.length} clé(s) supprimée(s). Recharge localhost:3001 pour repartir à zéro.`);
+    }
+
+    // Scan automatique au chargement
+    window.onload = scanStorage;
+  </script>
+</body>
+</html>
