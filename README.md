@@ -1,8 +1,22 @@
 # WebBuilder Studio
 
-A visual no-code web editor built on **GrapesJS Studio SDK**, **Next.js** and **TypeScript**.
+![WebBuilder Studio in action](./screenshots/webbuilder-screenshot.png)
 
-A personal tool to design and assemble web pages directly in the browser, without writing HTML by hand — with auto-save, a custom dark theme, and **Client First** methodology support.
+---
+
+Webflow was costing me too much. I could have stopped there. I chose to look for an alternative instead.
+
+While exploring open source tools, I discovered GrapesJS, a drag & drop visual editor engine I could run directly in VS Code. I decided to build my own tool around it, shaped exactly for the way I work.
+
+WebBuilder Studio is my personal Webflow. It follows the same logic, the same naming conventions, the same Client First structure. But it is entirely mine, so I can make it do exactly what I need.
+
+My workflow today: I ask Claude to generate a first version of a page using reference sites. The result is often solid, but generic. That is where WebBuilder Studio comes in. I import that base and rework it visually, component by component, until it becomes something clean and personal.
+
+I built my own portfolio with this tool. What you see in the canvas in the screenshot above is my portfolio being edited inside WebBuilder Studio.
+
+The tool is still in development. I have already built a Client First plugin (a button that automatically generates the correct section structure) and a basic animations plugin. Next steps: complex animations with GSAP, a CMS, and more optimisations over time.
+
+WebBuilder Studio is not a product. It is a training ground as much as a working tool. I use it to build sites, to learn how to write clean code, and to understand what happens under the hood.
 
 ---
 
@@ -11,8 +25,8 @@ A personal tool to design and assemble web pages directly in the browser, withou
 - Drag & drop visual editor (GrapesJS Studio SDK)
 - Custom dark theme (violet/pink palette)
 - Auto-save to a local JSON file via Next.js API
-- Client First support — structured section insertion (Finsweet methodology)
-- Animations plugin (AOS + Animate.css)
+- Client First plugin: one click generates a properly named section structure
+- Animations plugin (AOS + Animate.css, GSAP planned)
 - Rich components: tables, Swiper carousels, galleries, accordions, Iconify icons, YouTube videos
 
 ## Stack
