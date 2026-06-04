@@ -1,30 +1,30 @@
 # WebBuilder Studio
 
-Éditeur web visuel no-code construit sur **GrapesJS Studio SDK**, **Next.js** et **TypeScript**.
+A visual no-code web editor built on **GrapesJS Studio SDK**, **Next.js** and **TypeScript**.
 
-Un outil personnel pour concevoir et assembler des pages web directement dans le navigateur, sans écrire de HTML à la main — avec sauvegarde automatique, thème sombre personnalisé, et support de la méthodologie **Client First**.
+A personal tool to design and assemble web pages directly in the browser, without writing HTML by hand — with auto-save, a custom dark theme, and **Client First** methodology support.
 
 ---
 
-## Fonctionnalités
+## Features
 
-- Éditeur visuel drag & drop (GrapesJS Studio SDK)
-- Thème sombre sur mesure (palette violet/rose)
-- Sauvegarde automatique dans un fichier JSON local via API Next.js
-- Support Client First — insertion de sections structurées Finsweet
-- Plugin d'animations (AOS + Animate.css)
-- Composants riches : tableaux, carrousels Swiper, galeries, accordéons, icônes Iconify, vidéos YouTube
+- Drag & drop visual editor (GrapesJS Studio SDK)
+- Custom dark theme (violet/pink palette)
+- Auto-save to a local JSON file via Next.js API
+- Client First support — structured section insertion (Finsweet methodology)
+- Animations plugin (AOS + Animate.css)
+- Rich components: tables, Swiper carousels, galleries, accordions, Iconify icons, YouTube videos
 
 ## Stack
 
-| Outil | Rôle |
-|-------|------|
-| Next.js 16 | Framework React (App Router) |
-| GrapesJS Studio SDK | Moteur d'édition visuelle |
-| TypeScript | Typage |
-| Tailwind CSS 4 | Styles utilitaires |
+| Tool | Role |
+|------|------|
+| Next.js 16 | React framework (App Router) |
+| GrapesJS Studio SDK | Visual editor engine |
+| TypeScript | Type safety |
+| Tailwind CSS 4 | Utility styles |
 
-## Installation
+## Getting started
 
 ```bash
 git clone https://github.com/oriane-nyikeine/webbuilder-studio.git
@@ -33,26 +33,26 @@ npm install
 npm run dev
 ```
 
-Ouvrir [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
-> La clé de licence `DEMO_LOCALHOST_KEY` est fournie par GrapesJS pour un usage en développement local uniquement.
+> The `DEMO_LOCALHOST_KEY` license key is provided by GrapesJS for local development only.
 
-## Structure
+## Project structure
 
 ```
 src/
 ├── app/
-│   ├── api/project/     # API de sauvegarde (GET / POST)
+│   ├── api/project/     # Save API (GET / POST)
 │   ├── layout.tsx
 │   └── page.tsx
 ├── components/
-│   ├── StudioEditorWrapper.tsx   # Éditeur principal
+│   ├── StudioEditorWrapper.tsx   # Main editor
 │   └── LoadingScreen.tsx
 └── plugins/
-    ├── clientFirstPlugin.ts      # Intégration Client First
-    └── animationsPlugin.ts       # Animations AOS
+    ├── clientFirstPlugin.ts      # Client First integration
+    └── animationsPlugin.ts       # AOS animations
 data/
-└── portfolio.json                # Projet sauvegardé
+└── portfolio.json                # Saved project (git-ignored)
 ```
 
 ---
